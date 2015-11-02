@@ -1,0 +1,27 @@
+<div class="row" ng-controller="homeController">
+  <div class="col-lg-6">
+    <button class="btn btn-lg btn-primary" ng-click="incrementCount()">Click</button>
+  </div>
+  <div class="col-lg-6">
+    <h1>{{count}}</h1>
+  </div>
+  <hr>
+  <div class="col-lg-6">
+    <label>Search</label>
+    <input ng-model="query" type="text" class="form-control" placeholder="Search Country / Population / Capital" />
+  </div>
+  <div class="col-lg-12">
+    <table class="table table-bordered">
+      <tr>
+        <th><a href="" ng-click="sortField = 'name'; reverse = !reverse">Country</a></th>
+        <th><a href="" ng-click="sortField = 'population'; reverse = !reverse">Population</a></th>
+        <th><a href="" ng-click="sortField = 'capital'; reverse = !reverse">Capital</a></th>
+      </tr>
+      <tr ng-repeat="country in countries | filter:query | orderBy:sortField:reverse">
+        <td>{{country.name}}</td>
+        <td>{{country.population | number}}</td>
+        <td>{{country.capital}}</td>
+      </tr>
+    </table>
+  </div>
+</div>
